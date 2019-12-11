@@ -2,13 +2,13 @@
 ## Distributed Minio ref: https://docs.minio.io/docs/distributed-minio-quickstart-guide
 ##
 image: "minio/minio"
-imageTag: "RELEASE.2017-12-28T01-21-00Z"
+imageTag: "RELEASE.2019-10-12T01-39-57Z"
 imagePullPolicy: "Always"
 pullSecrets: []
 
 minioMc:
   image: minio/mc
-  tag: "RELEASE.2018-07-13T00-53-22Z"
+  tag: "RELEASE.2019-10-09T22-54-57Z"
 
 ingress:
   enabled:
