@@ -26,6 +26,11 @@ spec:
       labels:
         app: {{ template "name" . }}
         release: {{ .Release.Name }}
+      {{- if .Values.labels }}
+      {{- range $key, $value := .Values.labels }}
+        {{ $key }}: {{ $value | quote }}
+      {{- end }}
+      {{- end }}
       annotations:
         checksum/config: {{ include (print $.Template.BasePath "/configmap.yml") . | sha256sum }}
         cluster-autoscaler.kubernetes.io/safe-to-evict: "true"

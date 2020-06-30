@@ -19,6 +19,11 @@ spec:
       labels:
         app: {{ template "name" . }}
         release: {{ .Release.Name }}
+      {{- if .Values.labels }}
+      {{- range $key, $value := .Values.labels }}
+        {{ $key }}: {{ $value | quote }}
+      {{- end }}
+      {{- end }}
       annotations:
         checksum/config: {{ include (print $.Template.BasePath "/configmap.yaml") . | sha256sum }}
     spec:

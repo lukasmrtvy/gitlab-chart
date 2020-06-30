@@ -87,6 +87,8 @@ nodeSelector: {}
 tolerations: []
 affinity: {}
 
+labels: {}
+
 ## Allow to overwrite under which User and Group we're running.
 securityContext:
   runAsUser: 1000

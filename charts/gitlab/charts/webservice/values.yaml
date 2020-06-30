@@ -34,6 +34,8 @@ shutdown:
 
 annotations: {}
 
+labels: {}
+
 metrics:
   enabled: true
   annotations:

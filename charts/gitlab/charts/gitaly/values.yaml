@@ -32,6 +32,7 @@ service:
     externalPort: 8076
     internalPort: 8076
 annotations: {}
+labels: {}
 
 init:
   image: {}

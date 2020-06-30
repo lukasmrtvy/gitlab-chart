@@ -26,6 +26,8 @@ enabled: true
 # Tolerations for pod scheduling
 tolerations: []
 
+labels: {}
+
 init:
   image: {}
     # repository:

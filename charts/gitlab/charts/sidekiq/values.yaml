@@ -23,6 +23,7 @@ cluster: true
 experimentalQueueSelector: false
 
 annotations: {}
+labels: {}
 
 logging:
   # set to "json" for json
