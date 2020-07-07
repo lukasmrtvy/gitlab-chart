@@ -130,9 +130,16 @@ You can read more about setting up your production-ready object storage in the [
 ### Prometheus
 
 We use the [upstream Prometheus chart](https://github.com/helm/charts/tree/master/stable/prometheus#configuration),
-and do not override values from our own defaults.
-We do, however, default disable `alertmanager`, `nodeExporter`, and
-`pushgateway`.
+and do not override values from our own defaults other than a customized
+`prometheus.yml` file to limit collection of metrics to the Kubernetes API
+and the objects created by the GitLab chart. We do, however, default disable
+`alertmanager`, `nodeExporter`, and `pushgateway`.
+
+The `prometheus.yaml` file instructs Prometheus to collect metrics from
+resources that have the `gitlab.com/prometheus_scrape` annotation. In addition,
+the `gitlab.com/prometheus_path` and `gitlab.com/prometheus_port` annotations
+may be used to configure how metrics are discovered. Each of these annotations
+are comparable to the `prometheus.io/{scrape,path,port}` annotations.
 
 Refer to the [Prometheus chart documentation](https://github.com/helm/charts/tree/master/stable/prometheus#configuration) for the
 exhaustive list of configuration options and ensure they are sub-keys to
