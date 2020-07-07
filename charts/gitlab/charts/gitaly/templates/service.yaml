@@ -8,8 +8,8 @@ metadata:
     {{- include "gitlab.standardLabels" . | nindent 4 }}
   annotations:
   {{- if .Values.metrics.enabled }}
-    prometheus.io/scrape: "true"
-    prometheus.io/port: "{{ .Values.metrics.metricsPort }}"
+    gitlab.com/prometheus_scrape: "true"
+    gitlab.com/prometheus_port: "{{ .Values.metrics.metricsPort }}"
   {{- end }}
     {{- include "gitlab.serviceAnnotations" . | nindent 4 }}
 spec:

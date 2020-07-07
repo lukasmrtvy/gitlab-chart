@@ -265,8 +265,8 @@ controller:
 
     service:
       annotations: {}
-      # prometheus.io/scrape: "true"
-      # prometheus.io/port: "10254"
+      # gitlab.com/prometheus_scrape: "true"
+      # gitlab.com/prometheus_port: "10254"
 
       omitClusterIP: false
       # clusterIP: ""

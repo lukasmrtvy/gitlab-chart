@@ -17,9 +17,9 @@ metrics:
   enabled: true
   port: 9168
   annotations:
-    prometheus.io/scrape: "true"
-    prometheus.io/port: "9168"
-    prometheus.io/path: "/metrics"
+    gitlab.com/prometheus_scrape: "true"
+    gitlab.com/prometheus_port: "9168"
+    gitlab.com/prometheus_path: "/metrics"
 
 enabled: true
 
@@ -43,7 +43,7 @@ redis:
   password: {}
 
 psql: {}
-  # port: 5432 
+  # port: 5432
 
 resources:
   # limits:
@@ -64,5 +64,4 @@ serviceAccount:
   create: false
   annotations: {}
   ## Name to be used for serviceAccount, otherwise defaults to chart fullname
-  # name: 
-  
+  # name:
