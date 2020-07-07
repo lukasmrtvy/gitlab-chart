@@ -25,6 +25,11 @@ spec:
       annotations:
         checksum/configmap: {{ include (print $.Template.BasePath "/configmap.yaml") . | sha256sum }}
         cluster-autoscaler.kubernetes.io/safe-to-evict: "true"
+        {{- if .Values.debug.prometheus.enabled }}
+        gitlab.com/prometheus_scrape: true
+        gitlab.com/prometheus_path: {{ .Values.debug.prometheus.path }}
+        gitlab.com/prometheus_port: {{ .Values.debug.addr.port }}
+        {{- end }}
       {{- range $key, $value := .Values.annotations }}
         {{ $key }}: {{ $value | quote }}
       {{- end }}
