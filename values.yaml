@@ -640,10 +640,10 @@ prometheus:
               regex: true
             - source_labels: [__meta_kubernetes_namespace]
               action: keep
-              regex: {{ .Release.Namespace }}
+              regex: gitlab
             - source_labels: [__meta_kubernetes_pod_label_release]
               action: keep
-              regex: {{ .Release.Name }}
+              regex: gl
             - source_labels: [__meta_kubernetes_pod_annotation_prometheus_io_path]
               action: replace
               target_label: __metrics_path__
@@ -661,6 +661,51 @@ prometheus:
             - source_labels: [__meta_kubernetes_pod_name]
               action: replace
               target_label: kubernetes_pod_name
+        - job_name: 'kubernetes-service-endpoints'
+          kubernetes_sd_configs:
+            - role: endpoints
+          relabel_configs:
+            - source_labels: [__meta_kubernetes_namespace]
+              action: keep
+              regex: gitlab
+            - source_labels: [__meta_kubernetes_service_label_release]
+              action: keep
+              regex: gl
+            - action: keep
+              regex: true
+              source_labels:
+                - __meta_kubernetes_service_annotation_prometheus_io_scrape
+            - action: replace
+              regex: (https?)
+              source_labels:
+                - __meta_kubernetes_service_annotation_prometheus_io_scheme
+              target_label: __scheme__
+            - action: replace
+              regex: (.+)
+              source_labels:
+                - __meta_kubernetes_service_annotation_prometheus_io_path
+              target_label: __metrics_path__
+            - action: replace
+              regex: ([^:]+)(?::\d+)?;(\d+)
+              replacement: $1:$2
+              source_labels:
+                - __address__
+                - __meta_kubernetes_service_annotation_prometheus_io_port
+              target_label: __address__
+            - action: labelmap
+              regex: __meta_kubernetes_service_label_(.+)
+            - action: replace
+              source_labels:
+                - __meta_kubernetes_namespace
+              target_label: kubernetes_namespace
+            - action: replace
+              source_labels:
+                - __meta_kubernetes_service_name
+              target_label: kubernetes_name
+            - action: replace
+              source_labels:
+                - __meta_kubernetes_pod_node_name
+              target_label: kubernetes_node
         - job_name: 'kubernetes-services'
           metrics_path: /probe
           params:
@@ -671,12 +716,9 @@ prometheus:
             - source_labels: [__meta_kubernetes_service_annotation_prometheus_io_probe]
               action: keep
               regex: true
-            - source_labels: [__meta_kubernetes_namespace]
-              action: keep
-              regex: {{ .Release.Namespace }}
-            - source_labels: [__meta_kubernetes_pod_label_release]
-              action: keep
-              regex: {{ .Release.Name }}
+            # - source_labels: [__meta_kubernetes_namespace]
+            #   action: keep
+            #   regex: gitlab
             - source_labels: [__address__]
               target_label: __param_target
             - target_label: __address__
