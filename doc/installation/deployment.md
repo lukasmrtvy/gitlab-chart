@@ -135,7 +135,7 @@ and do not override values from our own defaults other than a customized
 and the objects created by the GitLab chart. We do, however, default disable
 `alertmanager`, `nodeExporter`, and `pushgateway`.
 
-The `prometheus.yaml` file instructs Prometheus to collect metrics from
+The `prometheus.yml` file instructs Prometheus to collect metrics from
 resources that have the `gitlab.com/prometheus_scrape` annotation. In addition,
 the `gitlab.com/prometheus_path` and `gitlab.com/prometheus_port` annotations
 may be used to configure how metrics are discovered. Each of these annotations
