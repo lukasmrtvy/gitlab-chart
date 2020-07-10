@@ -579,8 +579,8 @@ nginx-ingress:
       enabled: true
       service:
         annotations:
-          gitlab.com/prometheus_scrape: "true"
-          gitlab.com/prometheus_port: "10254"
+          prometheus.io/scrape: "true"
+          prometheus.io/port: "10254"
   defaultBackend:
     minAvailable: 1
     replicaCount: 2
