@@ -296,6 +296,18 @@ Handles merging a set of deployment annotations
 {{- end -}}
 {{- end -}}
 
+{{/* ######### labels */}}
+
+{{/*
+Handles merging a set of non-selector labels
+*/}}
+{{- define "gitlab.podLabels" -}}
+{{- $allLabels := merge (default (dict) .Values.labels) .Values.global.labels -}}
+{{- if $allLabels -}}
+{{- toYaml $allLabels -}}
+{{- end -}}
+{{- end -}}
+
 {{/*
 Returns gitlabUrl needed for gitlab-runner
 */}}

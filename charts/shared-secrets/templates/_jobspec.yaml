@@ -16,11 +16,7 @@ spec:
       labels:
         app: {{ template "name" . }}
         release: {{ .Release.Name }}
-      {{- if .Values.labels }}
-      {{- range $key, $value := .Values.labels }}
-        {{ $key }}: {{ $value | quote }}
-      {{- end }}
-      {{- end }}
+        {{- include "gitlab.podLabels" . | nindent 8 }}
     spec:
       {{- if .Values.tolerations }}
       tolerations:

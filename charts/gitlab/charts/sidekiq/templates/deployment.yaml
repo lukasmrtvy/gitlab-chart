@@ -58,11 +58,10 @@ spec:
         app: {{ $name }}
         release: {{ $releaseName }}
         queue-pod-name: {{ .name }}
-      {{- if $.Values.labels }}
-      {{- range $key, $value := $.Values.labels }}
-        {{ $key }}: {{ $value | quote }}
-      {{- end }}
-      {{- end }}
+        {{- include "gitlab.podLabels" $ | nindent 8 -}}
+        {{ range $key, $value := .labels }}
+        {{ $key }}: {{ $value }}
+        {{- end }}
       annotations:
         checksum/configmap: {{ $configMapChecksum }}
         cluster-autoscaler.kubernetes.io/safe-to-evict: "true"
