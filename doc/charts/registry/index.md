@@ -109,6 +109,7 @@ If you chose to deploy this chart as a standalone, remove the `registry` at the 
 | Parameter                                  | Default                                      | Description                                                                                          |
 |--------------------------------------------|----------------------------------------------|------------------------------------------------------------------------------------------------------|
 | `annotations`                              |                                              | Pod annotations                                                                                      |
+| `labels`                                   |                                              | Supplemental Pod labels. Will not be used for selectors.                                             |
 | `authAutoRedirect`                         | `true`                                       | Auth auto-redirect (must be true for Windows clients to work)                                        |
 | `authEndpoint`                             | `global.hosts.gitlab.name`                   | Auth endpoint (only host and port)                                                                   |
 | `certificate.secret`                       | `gitlab-registry`                            | JWT certificate                                                                                      |

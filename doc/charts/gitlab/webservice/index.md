@@ -32,7 +32,7 @@ to the `helm install` command using the `--set` flags.
 | Parameter                        | Default               | Description                                    |
 | -------------------------------- | --------------------- | ---------------------------------------------- |
 | `annotations`                    |                       | Pod annotations                                |
-| `labels`                         |                       | Pod labels                                     |
+| `labels`                         |                       | Supplemental Pod labels. Will not be used for selectors. |
 | `deployment.livenessProbe.initialDelaySeconds`  | 20     | Delay before liveness probe is initiated       |
 | `deployment.livenessProbe.periodSeconds`        | 60     | How often to perform the liveness probe        |
 | `deployment.livenessProbe.timeoutSeconds`       | 30     | When the liveness probe times out              |

@@ -33,7 +33,7 @@ controlled by `global.shell.port`.
 | Parameter                | Default        | Description                              |
 | ------------------------ | -------------- | ---------------------------------------- |
 | `annotations`            |                | Pod annotations                          |
-| `labels`                 |                | Pod labels                               |
+| `labels`                 |                | Supplemental Pod labels. Will not be used for selectors. |
 | `config.loginGraceTime`  | `120`          | Specifies amount of time athat the server will disconnect after if the user has not successfully logged in |
 | `config.maxStartups.full`  | `100`     | SSHd refuse probability will increase linearly and all unauthenticated connection attempts would be refused when unauthenticated connections number will reach specified number |
 | `config.maxStartups.rate`  | `30`      | SSHd will refuse connections with specified probability when there would be too many unauthenticated connections (optional) |

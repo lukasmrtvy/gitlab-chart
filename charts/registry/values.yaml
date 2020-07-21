@@ -4,6 +4,8 @@ image:
   pullPolicy: 'IfNotPresent'
   pullSecrets: []
 
+labels: {}
+
 deployment:
   terminationGracePeriodSeconds: 30
   readinessProbe:
