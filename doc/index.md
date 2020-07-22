@@ -43,7 +43,7 @@ can be installed separately.
 
 Some features of GitLab are not currently available using the Helm chart:
 
-- [GitLab Pages](https://gitlab.com/gitlab-org/charts/gitlab/-/issues/37)
+- [GitLab Pages](https://gitlab.com/gitlab-org/charts/gitlab/-/issues/37) whether as part of the chart or in a standalone environment
 - [Smartcard authentication](https://gitlab.com/gitlab-org/charts/gitlab/-/issues/988)
 
 Database limitations:
