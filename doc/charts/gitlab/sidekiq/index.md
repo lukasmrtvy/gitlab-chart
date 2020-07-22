@@ -40,7 +40,7 @@ to the `helm install` command using the `--set` flags:
 | Parameter                            | Default           | Description                              |
 | ------------------------------------ | ----------------- | ---------------------------------------- |
 | `annotations`                        |                   | Pod annotations                          |
-| `labels`                             |                   | Supplemental Pod labels. Will not be used for selectors. |
+| `podLabels`                          |                   | Supplemental Pod labels. Will not be used for selectors. |
 | `concurrency`                        | `25`              | Sidekiq default concurrency              |
 | `cluster`                            | `true`            | [See below](#cluster).                   |
 | `enabled`                            | `true`            | Sidekiq enabled flag                     |

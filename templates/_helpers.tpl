@@ -302,7 +302,7 @@ Handles merging a set of deployment annotations
 Handles merging a set of non-selector labels
 */}}
 {{- define "gitlab.podLabels" -}}
-{{- $allLabels := merge (default (dict) .Values.labels) .Values.global.labels -}}
+{{- $allLabels := merge (default (dict) .Values.podLabels) .Values.global.pod.labels -}}
 {{- if $allLabels -}}
 {{- toYaml $allLabels -}}
 {{- end -}}

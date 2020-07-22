@@ -17,7 +17,6 @@
 ## The global properties are used to configure multiple charts at once.
 ## Extended documenation at doc/charts/globals.md
 global:
-  labels: {}
   ## GitLab operator is Alpha. Not for production use.
   operator:
     enabled: false
@@ -27,6 +26,10 @@ global:
       #   https://gitlab.com/gitlab-org/charts/gitlab/issues/1262
       #   https://github.com/helm/helm/issues/3805
       autoPause: true
+
+  ## Supplemental Pod labels. Will not be used for selectors.
+  pod:
+    labels: {}
 
   ## doc/installation/deployment.md#deploy-the-community-edition
   edition: ee

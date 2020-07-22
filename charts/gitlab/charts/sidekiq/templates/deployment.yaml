@@ -59,7 +59,7 @@ spec:
         release: {{ $releaseName }}
         queue-pod-name: {{ .name }}
         {{- include "gitlab.podLabels" $ | nindent 8 -}}
-      {{- range $key, $value := .labels }}
+      {{- range $key, $value := .podLabels }}
         {{ $key }}: {{ $value }}
       {{- end }}
       annotations:
