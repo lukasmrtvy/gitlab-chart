@@ -59,7 +59,9 @@ spec:
         release: {{ $releaseName }}
         queue-pod-name: {{ .name }}
         {{- include "gitlab.podLabels" $ | nindent 8 -}}
-        {{ .labels | toYaml }}
+      {{- range $key, $value := .labels }}
+        {{ $key }}: {{ $value }}
+      {{- end }}
       annotations:
         checksum/configmap: {{ $configMapChecksum }}
         cluster-autoscaler.kubernetes.io/safe-to-evict: "true"
