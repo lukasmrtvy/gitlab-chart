@@ -22,7 +22,7 @@ tolerations: []
 annotations: {}
 
 # Labels for the job
-labels: {}
+podLabels: {}
 
 enabled: true
 initialRootPassword: {}

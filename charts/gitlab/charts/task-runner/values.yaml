@@ -21,7 +21,7 @@ antiAffinityLabels:
 enabled: true
 replicas: 1
 annotations: {}
-labels: {}
+podLabels: {}
 
 psql: {}
   # port: 5432 

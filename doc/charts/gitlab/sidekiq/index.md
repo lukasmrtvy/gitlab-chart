@@ -352,6 +352,7 @@ a different pod configuration. It will not add a new pod in addition to the defa
 | `minReplicas`  | Integer | `2`     | Minimum number of replicas |
 | `maxReplicas`  | Integer | `10`    | Maximum number of replicas |
 | `maxUnavailable` | Integer | `1`   | Limit of maximum number of Pods to be unavailable |
+| `podLabels`      | `{}`  | `{}`    | Supplemental Pod labels. Will not be used for selectors. |
 | `updateStrategy` |       | `{}`    | Allows one to configure the update strategy utilized by the deployment |
 | `extraVolumes` | String  |         | Configures extra volumes for the given pod. |
 | `extraVolumeMounts` | String |     | Configures extra volume mounts for the given pod. |

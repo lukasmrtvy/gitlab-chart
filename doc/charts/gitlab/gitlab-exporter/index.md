@@ -31,7 +31,7 @@ to the `helm install` command using the `--set` flags.
 | Parameter                        | Default               | Description                                    |
 | -------------------------------- | --------------------- | ---------------------------------------------- |
 | `annotations`                    |                       | Pod annotations                                |
-| `labels`                         |                       | Pod labels                                     |
+| `podLabels`                      |                       | Supplemental Pod labels. Will not be used for selectors. |
 | `enabled`                        | `true`                | GitLab Exporter enabled flag                   |
 | `extraContainers`                |                       | List of extra containers to include            |
 | `extraInitContainers`            |                       | List of extra init containers to include       |

@@ -23,7 +23,7 @@ cluster: true
 experimentalQueueSelector: false
 
 annotations: {}
-labels: {}
+podLabels: {}
 
 logging:
   # set to "json" for json
@@ -263,6 +263,7 @@ pods:
     # priorityClassName: ""
     # hpa:
     #   targetAverageValue:
+    # podLabels: {}
 
 ## Allow to overwrite under which User and Group we're running.
 securityContext:
@@ -275,8 +276,8 @@ serviceAccount:
   create: false
   annotations: {}
   ## Name to be used for serviceAccount, otherwise defaults to chart fullname
-  # name: 
-  
+  # name:
+
 ## Allow configuring pods' priorityClassName. This is used to control pod priority in case of eviction:
 #  https://kubernetes.io/docs/concepts/configuration/pod-priority-preemption/
 priorityClassName: ""
