@@ -1,0 +1,22 @@
+# Default values for gitlab-kas.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+annotations: {}
+enabled: true
+global: {}
+image:
+  repository: registry.gitlab.com/gitlab-org/cluster-integration/gitlab-agent/kgb
+  tag: v0.0.1
+ingress:
+  annotations: {}
+  tls: {}
+replicaCount: 1
+service:
+  externalPort: 5005
+  internalPort: 5005
+  type: ClusterIP
+serviceAccount:
+  annotations: {}
+  create: false
+  enabled: false

@@ -1,0 +1,45 @@
+{{- if .Values.enabled }}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ template "fullname" . }}
+  namespace: {{ $.Release.Namespace }}
+  labels:
+    {{- include "gitlab.standardLabels" . | nindent 4 }}
+  annotations:
+    {{- include "gitlab.deploymentAnnotations" . | nindent 4 }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ template "name" . }}
+      release: {{ .Release.Name }}
+  template:
+    metadata:
+      labels:
+        app: {{ template "name" . }}
+        release: {{ .Release.Name }}
+      annotations:
+      {{- range $key, $value := .Values.annotations }}
+        {{ $key }}: {{ $value | quote }}
+      {{- end }}
+    spec:
+      containers:
+        - name: {{ template "name" . }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          env:
+            - name: GITALY_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: {{ template "gitlab.gitaly.authToken.secret" . }}
+                  key: {{ template "gitlab.gitaly.authToken.key" . }}
+          args:
+            - "--gitaly-token=$(GITALY_TOKEN)"
+            - "--gitaly-address=tcp://gitaly.{{ $.Release.Namespace }}:8075"
+            - "--gitlab-address=http://http-webservice.{{ $.Release.Namespace }}:8080"
+            - "--listen-address=0.0.0.0:5005"
+            - "--listen-websocket=true"
+          ports:
+            - containerPort: {{ .Values.service.internalPort }}
+              name: {{ template "name" . }}
+{{- end }}
