@@ -174,6 +174,12 @@ certificates will be generated. The `gitlab-runner` chart is not compatible with
 self-signed certificates at this time, and as such, should be disabled by setting
 `gitlab-runner.install=false`.
 
+The `gitlab-shell` chart can be used with Minikube, but requires mapping to a port other
+than 22 as it used by Minikube already. You can configure `gitlab.gitlab-shell.service.type=NodePort`
+and `gitlab.gitlab-shell.service.nodePort=<high-numbered port>`, which will allow cloning a repository
+via the specified port. To ensure this port is reflected in the clone link in the UI, configure
+`global.shell.port=<high-numbered port>`.
+
 ### Deploying GitLab with recommended settings
 
 When using the recommended 3 CPU and 8 GB of RAM, use
