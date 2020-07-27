@@ -17,6 +17,10 @@ global:
   rails:
     bootsnap:
       enabled: false
+  shell:
+    # Configure the clone link in the UI to include the high-numbered NodePort
+    # value from below (`gitlab.gitlab-shell.service.nodePort`)
+    port: 32022
 # Don't use certmanager, we'll self-sign
 certmanager:
   install: false
@@ -40,6 +44,11 @@ gitlab:
   gitlab-shell:
     minReplicas: 1
     maxReplicas: 1
+    # Map gitlab-shell to a high-numbered NodePort to support cloning over SSH since
+    # Minikube takes port 22.
+    service:
+      type: NodePort
+      nodePort: 32022
 registry:
   hpa:
     minReplicas: 1
