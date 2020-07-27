@@ -17,6 +17,6 @@ certmanager:
 # Use the `ingress` addon, not our Ingress (can't map 22/80/443)
 nginx-ingress:
   enabled: false
-# GitLab Runner isn't a big fan of self-signed certificates
+# Provide gitlab-runner with secret object containing self-signed certificate chain
 gitlab-runner:
-  install: false
+  certsSecretName: gitlab-wildcard-tls-chain

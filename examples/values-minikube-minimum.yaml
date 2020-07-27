@@ -26,9 +26,9 @@ nginx-ingress:
 # Save resources, only 2 CPU
 prometheus:
   install: false
-# GitLab Runner isn't a big fan of self-signed certificates
+# Provide gitlab-runner with secret object containing self-signed certificate chain
 gitlab-runner:
-  install: false
+  certsSecretName: gitlab-wildcard-tls-chain
 # Reduce replica counts, reducing CPU & memory requirements
 gitlab:
   webservice:
