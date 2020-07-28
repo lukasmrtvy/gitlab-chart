@@ -6,8 +6,9 @@ annotations: {}
 enabled: true
 global: {}
 image:
-  repository: registry.gitlab.com/gitlab-org/cluster-integration/gitlab-agent/kgb
-  tag: v0.0.1
+  repository: registry.gitlab.com/gitlab-org/cluster-integration/gitlab-agent/kas
+  tag: 5f88e4a
+  # tag: v0.0.1
 ingress:
   annotations: {}
   tls: {}
