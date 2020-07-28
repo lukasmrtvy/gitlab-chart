@@ -24,6 +24,8 @@ spec:
         {{ $key }}: {{ $value | quote }}
       {{- end }}
     spec:
+      serviceAccountName: {{ template "fullname" . }}
+      automountServiceAccountToken: false
       containers:
         - name: {{ template "name" . }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"

@@ -19,5 +19,3 @@ service:
   type: ClusterIP
 serviceAccount:
   annotations: {}
-  create: false
-  enabled: false
