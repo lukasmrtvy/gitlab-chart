@@ -120,6 +120,10 @@ Access GitLab at `http://gitlab.(your host IP).nip.io`.
 NOTE: **Note:**
 If you need to log into the registry with `docker login`, you will need to tell Docker to [trust your insecure registry](https://docs.docker.com/registry/insecure/#deploy-a-plain-http-registry).
 
+### Handling DNS
+
+This guide assumes you have network access to [nip.io](https://nip.io). If this is not available to you, please refer to the [handling DNS](../minikube/index.md#handling-dns) section in the Minikube documentation.
+
 ## Cleaning up
 
 When you're ready to clean up your local system, run this command:
