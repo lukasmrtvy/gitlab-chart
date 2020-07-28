@@ -9,7 +9,6 @@ metadata:
   annotations:
     {{- include "gitlab.deploymentAnnotations" . | nindent 4 }}
 spec:
-  replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
       app: {{ template "name" . }}
@@ -24,7 +23,7 @@ spec:
         {{ $key }}: {{ $value | quote }}
       {{- end }}
     spec:
-      serviceAccountName: {{ template "fullname" . }}
+      serviceAccountName: {{ template "gitlab.serviceAccount.name" . }}
       automountServiceAccountToken: false
       containers:
         - name: {{ template "name" . }}
@@ -37,9 +36,9 @@ spec:
                   key: {{ template "gitlab.gitaly.authToken.key" . }}
           args:
             - "--gitaly-token=$(GITALY_TOKEN)"
-            - "--gitaly-address=tcp://gitlab-gitaly.{{ $.Release.Namespace }}:8075"
-            - "--gitlab-address=http://gitlab-webservice.{{ $.Release.Namespace }}:8181"
-            - "--listen-address=0.0.0.0:5005"
+            - "--gitaly-address=tcp://gitlab-gitaly.{{ .Release.Namespace }}:8075"
+            - "--gitlab-address=http://$(GITLAB_WEBSERVICE_SERVICE_HOST):$(GITLAB_WEBSERVICE_SERVICE_PORT_HTTP_WORKHORSE)"
+            - "--listen-address=0.0.0.0:{{ .Values.service.internalPort }}"
             - "--listen-websocket=true"
           ports:
             - containerPort: {{ .Values.service.internalPort }}
