@@ -5,7 +5,7 @@ apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   name: {{ template "fullname" . }}
-  namespace: {{ $.Release.Namespace }}
+  namespace: {{ .Release.Namespace }}
   labels:
     {{- include "gitlab.standardLabels" . | nindent 4 }}
   annotations:
@@ -24,7 +24,7 @@ spec:
           - path: /-/kubernetes-agent
             backend:
               serviceName: {{ .Release.Name }}-{{ template "name" . }}
-              servicePort: 5005
+              servicePort: {{ .Values.service.externalPort }}
   {{- if (and $tlsSecret (eq (include "gitlab.ingress.tls.enabled" $) "true" )) }}
   tls:
     - hosts:
