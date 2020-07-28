@@ -38,7 +38,7 @@ spec:
             - "--gitaly-token=$(GITALY_TOKEN)"
             - "--gitaly-address=tcp://gitlab-gitaly.{{ .Release.Namespace }}:8075"
             - "--gitlab-address=http://$(GITLAB_WEBSERVICE_SERVICE_HOST):$(GITLAB_WEBSERVICE_SERVICE_PORT_HTTP_WORKHORSE)"
-            - "--listen-address=0.0.0.0:{{ .Values.service.internalPort }}"
+            - "--listen-address=:{{ .Values.service.internalPort }}"
             - "--listen-websocket=true"
           ports:
             - containerPort: {{ .Values.service.internalPort }}
