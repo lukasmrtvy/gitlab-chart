@@ -35,8 +35,8 @@ spec:
                   key: {{ template "gitlab.gitaly.authToken.key" . }}
           args:
             - "--gitaly-token=$(GITALY_TOKEN)"
-            - "--gitaly-address=tcp://gitaly.{{ $.Release.Namespace }}:8075"
-            - "--gitlab-address=http://http-webservice.{{ $.Release.Namespace }}:8080"
+            - "--gitaly-address=tcp://gitlab-gitaly.{{ $.Release.Namespace }}:8075"
+            - "--gitlab-address=http://gitlab-webservice.{{ $.Release.Namespace }}:8181"
             - "--listen-address=0.0.0.0:5005"
             - "--listen-websocket=true"
           ports:
