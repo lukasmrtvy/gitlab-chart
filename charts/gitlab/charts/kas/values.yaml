@@ -3,7 +3,7 @@
 # Declare variables to be passed into your templates.
 
 annotations: {}
-enabled: true
+enabled: false
 global: {}
 hpa:
   targetAverageValue: 100m
