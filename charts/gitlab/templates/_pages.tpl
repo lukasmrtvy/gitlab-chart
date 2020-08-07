@@ -6,4 +6,7 @@ Usage:
 {{- define "gitlab.appConfig.pages.configuration" -}}
 pages:
   enabled: {{ eq $.Values.global.appConfig.pages.enabled true }}
+  host: {{ $.Values.global.appConfig.pages.host }}
+  port: {{ $.Values.global.appConfig.pages.port }}
+  path: {{ $.Values.global.appConfig.pages.path }}
 {{- end -}}{{/* "gitlab.appConfig.pages.configuration" */}}
