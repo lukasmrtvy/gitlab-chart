@@ -9,4 +9,5 @@ pages:
   host: {{ $.Values.global.appConfig.pages.host }}
   port: {{ $.Values.global.appConfig.pages.port }}
   path: {{ $.Values.global.appConfig.pages.path }}
+  https: {{ $.Values.global.appConfig.pages.https }}
 {{- end -}}{{/* "gitlab.appConfig.pages.configuration" */}}
