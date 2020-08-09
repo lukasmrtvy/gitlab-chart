@@ -10,4 +10,6 @@ pages:
   port: {{ $.Values.global.appConfig.pages.port }}
   path: {{ $.Values.global.appConfig.pages.path }}
   https: {{ $.Values.global.appConfig.pages.https }}
+  artifacts_server: {{ $.Values.global.appConfig.pages.artifacts_server }}
+  access_control: {{ $.Values.global.appConfig.pages.access_control }}
 {{- end -}}{{/* "gitlab.appConfig.pages.configuration" */}}
